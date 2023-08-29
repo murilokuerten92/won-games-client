@@ -3,7 +3,12 @@ import GlobalStyles from '../src/styles/global'
 import { ThemeProvider } from 'styled-components'
 import theme from 'styles/theme'
 
+
+
 export const parameters = {
+  nextRouter: {
+    Provider: RouterContext.Provider
+  },
   backgrounds: {
     default: 'won-light',
     values: [
@@ -18,6 +23,7 @@ export const parameters = {
     ]
   }
 }
+
 
 export const decorators = [
   (Story) => (
