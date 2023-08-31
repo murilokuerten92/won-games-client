@@ -3,6 +3,8 @@ import userEvent from '@testing-library/user-event'
 
 import { renderWithTheme } from 'utils/tests/helpers'
 
+import { Email } from '@styled-icons/material-outlined'
+
 import TextField from '.'
 
 describe('<TextField />', () => {
@@ -22,6 +24,11 @@ describe('<TextField />', () => {
     renderWithTheme(<TextField placeholder="hey you" />)
 
     expect(screen.getByPlaceholderText('hey you')).toBeInTheDocument()
+  })
+  it('Renders with Icon', () => {
+    renderWithTheme(<TextField icon={<Email data-testid="icon" />} />)
+
+    expect(screen.getByTestId('icon')).toBeInTheDocument()
   })
 
   it('Changes its value when typing', async () => {
