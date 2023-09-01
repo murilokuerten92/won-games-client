@@ -6,8 +6,6 @@ import TextField from 'components/TextField'
 
 import { FormWrapper, FormLink } from 'components/Form'
 
-import * as S from './styles'
-
 const FormSignUp = () => (
   <FormWrapper>
     <form>
