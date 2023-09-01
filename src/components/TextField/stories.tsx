@@ -10,14 +10,14 @@ export default {
     labelFor: 'Email',
     icon: <Email />,
     id: 'Email',
-    initialValue: '',
+    initialValue: 'test',
     placeholder: 'john.cage@gmail.com'
   },
   argTypes: {
     onInput: { action: 'changed' },
-    icon: { type: '' }
+    icon: { type: 'string' }
   }
-} as unknown as Meta
+} as Meta
 
 export const Default: Story<TextFieldProps> = (args) => (
   <div style={{ maxWidth: 300, padding: 15 }}>
