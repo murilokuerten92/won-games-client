@@ -6,6 +6,16 @@ import Gallery from '.'
 
 import mockItems from './mock'
 
+jest.mock('next/image', () => ({
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  __esModule: true,
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  default: (props: any) => {
+    // eslint-disable-next-line @next/next/no-img-element
+    return <img {...props} />
+  }
+}))
 describe('<Gallery />', () => {
   it('should render thumbnails as buttons', () => {
     renderWithTheme(<Gallery items={mockItems.slice(0, 2)} />)

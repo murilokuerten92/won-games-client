@@ -1,18 +1,27 @@
 import { useState, useEffect, useRef } from 'react'
-import { ArrowBackIos as ArrowLeft } from '@styled-icons/material-outlined/ArrowBackIos'
-import { ArrowForwardIos as ArrowRight } from '@styled-icons/material-outlined/ArrowForwardIos'
+
 import { Close } from '@styled-icons/material-outlined/Close'
 import SlickSlider from 'react-slick'
+import { CustomArrowProps } from 'react-slick'
+
+import Image from 'next/image'
 
 import Slider, { SliderSettings } from 'components/Slider'
 
 import * as S from './styles'
+
+const NextArrow = ({ ...props }: CustomArrowProps) => (
+  <div {...props}>
+    <i className="fas fa-arrow-circle-right"></i>
+  </div>
+)
+
 const commonSettings: SliderSettings = {
   infinite: false,
   lazyLoad: 'ondemand',
   arrows: true,
-  nextArrow: <ArrowRight aria-label="next image" />,
-  prevArrow: <ArrowLeft aria-label="previous image" />
+  nextArrow: <NextArrow aria-label="next image" />,
+  prevArrow: <NextArrow aria-label="previous image" />
 }
 
 const settings: SliderSettings = {
@@ -77,11 +86,13 @@ const Gallery = ({ items }: GalleryProps) => {
     <S.Wrapper>
       <Slider ref={slider} settings={settings}>
         {items.map((item, index) => (
-          <img
+          <Image
             role="button"
             key={`thumb-${index}`}
             src={item.src}
             alt={`Thumb - ${item.label}`}
+            width={300}
+            height={140}
             onClick={() => {
               setIsOpen(true)
               slider.current!.slickGoTo(index, true)
@@ -101,7 +112,13 @@ const Gallery = ({ items }: GalleryProps) => {
         <S.Content>
           <Slider ref={slider} settings={modalSettings}>
             {items.map((item, index) => (
-              <img key={`gallery-${index}`} src={item.src} alt={item.label} />
+              <Image
+                key={`gallery-${index}`}
+                src={item.src}
+                alt={item.label}
+                width={300}
+                height={140}
+              />
             ))}
           </Slider>
         </S.Content>

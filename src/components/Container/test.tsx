@@ -3,7 +3,7 @@ import { renderWithTheme } from 'utils/tests/helpers'
 import { Container } from '.'
 
 describe('<Container />', () => {
-  it('should render the heading', () => {
+  it('should render the heading container component', () => {
     const { container } = renderWithTheme(
       <Container>
         <span>Won Games</span>
@@ -17,6 +17,7 @@ describe('<Container />', () => {
 
     expect(container.firstChild).toMatchInlineSnapshot(`
       .c0 {
+        width: 100%;
         max-width: 130rem;
         margin-left: auto;
         margin-right: auto;

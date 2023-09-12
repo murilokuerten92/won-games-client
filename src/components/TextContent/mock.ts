@@ -1,4 +1,6 @@
-export default {
+import { TextContentProps } from '.'
+
+const TextContentMock: TextContentProps = {
   title: 'Description',
   content: `<h1>Heading</h1>
 <h2>Heading</h2>
@@ -6,7 +8,7 @@ export default {
 <h4>Heading</h4>
 <h5>Heading</h5>
 <h6>Heading</h6>
-<img alt="" src="/img/games/cyberpunk-1.jpg" />
+<img alt="" src="/img/games/cyberpunk-1.jpg"width={300} height={140} />
 <p>
   Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero,
   tempore. Nulla accusamus tempora quaerat repellat accusantium
@@ -19,7 +21,7 @@ export default {
   consequuntur eligendi similique nostrum aspernatur natus! Laboriosam
   sint quis ad quibusdam?
 </p>
-<img alt="" src="/img/games/cyberpunk-2.jpg" />
+<img alt="" src="/img/games/cyberpunk-2.jpg" width={300} height={140} />
 <ul>
   <li>Lorem Ipsum</li>
   <li>Lorem Ipsum</li>
@@ -41,3 +43,5 @@ export default {
   numquam ad perspiciatis doloribus error eveniet quo officia?
 </p>`
 }
+
+export default TextContentMock
