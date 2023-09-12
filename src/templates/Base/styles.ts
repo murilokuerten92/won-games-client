@@ -15,7 +15,10 @@ export const SectionFooter = styled.section`
   `}
 `
 export const Content = styled.div`
-  flex: 1 0 auto;
+  ${({ theme }) => css`
+    margin-top: ${theme.spacings.xlarge};
+    flex: 1 0 auto;
+  `}
 `
 
 export const Wrapper = styled.div`
