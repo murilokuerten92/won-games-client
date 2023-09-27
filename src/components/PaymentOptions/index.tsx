@@ -1,10 +1,10 @@
+/* eslint-disable @next/next/no-img-element */
 import { useState } from 'react'
 import { Add, ShoppingCart } from '@styled-icons/material-outlined'
 import Button from 'components/Button'
 import Heading from 'components/Heading'
 import Radio from 'components/Radio'
 import * as S from './styles'
-import Image from 'next/image'
 
 export type PaymentOptionsProps = {
   cards?: PaymentCard[]
@@ -31,7 +31,7 @@ const PaymentOptions = ({ cards, handlePayment }: PaymentOptionsProps) => {
           {cards?.map((card) => (
             <S.CardItem key={card.number}>
               <S.CardInfo>
-                <Image src={card.img} alt={card.flag} />
+                <img src={card.img} alt={card.flag} />
                 {card.number}
               </S.CardInfo>
               <Radio

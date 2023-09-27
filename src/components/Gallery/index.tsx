@@ -1,10 +1,9 @@
+/* eslint-disable @next/next/no-img-element */
 import { useState, useEffect, useRef } from 'react'
 
 import { Close } from '@styled-icons/material-outlined/Close'
 import SlickSlider from 'react-slick'
 import { CustomArrowProps } from 'react-slick'
-
-import Image from 'next/image'
 
 import Slider, { SliderSettings } from 'components/Slider'
 
@@ -86,7 +85,8 @@ const Gallery = ({ items }: GalleryProps) => {
     <S.Wrapper>
       <Slider ref={slider} settings={settings}>
         {items.map((item, index) => (
-          <Image
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
             role="button"
             key={`thumb-${index}`}
             src={item.src}
@@ -112,7 +112,7 @@ const Gallery = ({ items }: GalleryProps) => {
         <S.Content>
           <Slider ref={slider} settings={modalSettings}>
             {items.map((item, index) => (
-              <Image
+              <img
                 key={`gallery-${index}`}
                 src={item.src}
                 alt={item.label}

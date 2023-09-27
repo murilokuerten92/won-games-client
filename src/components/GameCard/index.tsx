@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import {
   AddShoppingCart,
   Favorite,
@@ -8,7 +9,6 @@ import Ribbon, { RibbonColors, RibbonSizes } from 'components/Ribbon'
 
 import Button from 'components/Button'
 import * as S from './styles'
-import Image from 'next/image'
 
 export type GameCardProps = {
   title: string
@@ -42,7 +42,7 @@ const GameCard = ({
       </Ribbon>
     )}
     <S.ImageBox>
-      <Image src={img} alt={title} width={300} height={140} />
+      <img src={img} alt={title} width={300} height={140} />
     </S.ImageBox>
     <S.Content>
       <S.Info>

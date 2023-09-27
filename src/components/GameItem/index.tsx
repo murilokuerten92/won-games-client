@@ -1,6 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import { Download } from '@styled-icons/boxicons-solid/Download'
 import * as S from './styles'
-import Image from 'next/image'
 
 export type PaymentInfoProps = {
   number: string
@@ -27,7 +27,7 @@ const GameItem = ({
   <S.Wrapper>
     <S.GameContent>
       <S.ImageBox>
-        <Image src={img} alt={title} />
+        <img src={img} alt={title} />
       </S.ImageBox>
 
       <S.Content>
@@ -51,7 +51,7 @@ const GameItem = ({
         <p>{paymentInfo.purchaseDate}</p>
         <S.CardInfo>
           <span>{paymentInfo.number}</span>
-          <Image src={paymentInfo.img} alt={paymentInfo.flag} />
+          <img src={paymentInfo.img} alt={paymentInfo.flag} />
         </S.CardInfo>
       </S.PaymentContent>
     )}
