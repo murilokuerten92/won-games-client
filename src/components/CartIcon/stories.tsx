@@ -1,16 +1,19 @@
-import { ShoppingCart } from '@styled-icons/material-outlined/ShoppingCart'
+import { Story, Meta } from '@storybook/react/types-6-0'
+import CartIcon, { CartIconProps } from '.'
 
-import * as S from './styles'
+export default {
+  title: 'CartIcon',
+  component: CartIcon,
+  parameters: {
+    backgrounds: {
+      default: 'won-dark'
+    }
+  }
+} as Meta
 
-export type CartIconProps = {
-  quantity?: number
+export const Default: Story = () => <CartIcon />
+export const withItems: Story<CartIconProps> = (args) => <CartIcon {...args} />
+
+withItems.args = {
+  quantity: 3
 }
-
-const CartIcon = ({ quantity = 0 }: CartIconProps) => (
-  <S.Wrapper>
-    {quantity > 0 && <S.Badge aria-label="Cart Items">{quantity}</S.Badge>}
-    <ShoppingCart aria-label="Shopping Cart" />
-  </S.Wrapper>
-)
-
-export default CartIcon
