@@ -1,20 +1,10 @@
-import { CustomArrowProps } from 'react-slick'
+import { ArrowBackIos as ArrowLeft } from '@styled-icons/material-outlined/ArrowBackIos'
+import { ArrowForwardIos as ArrowRight } from '@styled-icons/material-outlined/ArrowForwardIos'
 
-import GameCard, { GameCardProps } from 'components/GameCard'
 import Slider, { SliderSettings } from 'components/Slider'
+import GameCard, { GameCardProps } from 'components/GameCard'
 
 import * as S from './styles'
-
-export type GameCardSliderProps = {
-  items: GameCardProps[]
-  color?: 'white' | 'black'
-}
-
-const NextArrow = ({ ...props }: CustomArrowProps) => (
-  <div {...props}>
-    <i className="fas fa-arrow-circle-right"></i>
-  </div>
-)
 
 const settings: SliderSettings = {
   arrows: true,
@@ -51,8 +41,13 @@ const settings: SliderSettings = {
       }
     }
   ],
-  nextArrow: <NextArrow aria-label="next games" />,
-  prevArrow: <NextArrow aria-label="previous games" />
+  nextArrow: <ArrowRight aria-label="next games" />,
+  prevArrow: <ArrowLeft aria-label="previous games" />
+}
+
+export type GameCardSliderProps = {
+  items: GameCardProps[]
+  color?: 'white' | 'black'
 }
 
 const GameCardSlider = ({ items, color = 'white' }: GameCardSliderProps) => (
