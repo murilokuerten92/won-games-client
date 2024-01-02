@@ -14,12 +14,12 @@ export interface QueryGames_games_data_attributes_cover_data_attributes {
 
 export interface QueryGames_games_data_attributes_cover_data {
   __typename: "UploadFileEntity";
-  attributes: QueryGames_games_data_attributes_cover_data_attributes;
+  attributes: QueryGames_games_data_attributes_cover_data_attributes | null;
 }
 
 export interface QueryGames_games_data_attributes_cover {
   __typename: "UploadFileEntityResponse";
-  data: QueryGames_games_data_attributes_cover_data;
+  data: QueryGames_games_data_attributes_cover_data | null;
 }
 
 export interface QueryGames_games_data_attributes_developers_data_attributes {
@@ -61,5 +61,11 @@ export interface QueryGames {
 }
 
 export interface QueryGamesVariables {
-  limit: number;
+  limit?: number | null;
+  start?: number;
+  price_lte?: number;
+  name?: string;
+  sort?: string;
+  id?: string[];
 }
+

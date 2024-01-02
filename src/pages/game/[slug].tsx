@@ -1,7 +1,5 @@
 import Game, { GameTemplateProps } from 'templates/Game'
 
-import gamesMock from 'components/GameCardSlider/mock'
-import highlightMock from 'components/Highlight/mock'
 import { useRouter } from 'next/router'
 import { initializeApollo } from 'utils/apollo'
 import { QUERY_GAMES, QUERY_GAMES_BY_SLUG } from 'graphql/queries/games'
@@ -34,7 +32,11 @@ export async function getStaticPaths() {
   const { data } = await apolloClient.query<QueryGames, QueryGamesVariables>({
     query: QUERY_GAMES,
     variables: {
-      limit: 9
+      limit: 9,
+      start: 0,
+      price_lte: 0,
+      name: 'windows',
+      sort: 'price:asc'
     }
   })
 
@@ -60,10 +62,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     query: QUERY_GAMES_BY_SLUG,
     variables: {
       slug: `${params?.slug}`
-    }
+    },
+    fetchPolicy: 'no-cache'
   })
 
-  if (!data.games?.data.length) {
+  if (!data?.games?.data?.length) {
     return { notFound: true }
   }
 
@@ -86,10 +89,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   })
 
   return {
+    revalidate: 10,
     props: {
-      revalidate: 60,
       cover: `http://localhost:1337/${game.attributes?.cover?.data?.attributes?.url}`,
       gameInfo: {
+        id: params?.slug,
         title: game.attributes?.name,
         price: game.attributes?.price,
         description: game.attributes?.short_description
@@ -112,7 +116,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         )
       },
       upcomingTitle: upcoming.showcase.data.attributes.upcomingGames.title,
-      upcomingGames: gamesMapper(upcoming.upcomingGames.data),
+      upcomingGames: gamesMapper(upcoming?.upcomingGames?.data),
       upcomingHighlight: highlightMapper(
         upcoming.showcase.data.attributes.upcomingGames.highlight
       ),

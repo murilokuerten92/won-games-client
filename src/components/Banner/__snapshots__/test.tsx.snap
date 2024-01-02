@@ -68,14 +68,14 @@ exports[`<Banner /> should render correctly 1`] = `
   margin-bottom: 1.6rem;
 }
 
+@media (max-width:1170px) {
+
+}
+
 @media (min-width:768px) {
   .c0 {
     box-shadow: 0 0.4rem 0.5rem 0 rgba(0,0,0,0.2);
   }
-}
-
-@media (max-width:1170px) {
-
 }
 
 @media (min-width:768px) {
@@ -109,7 +109,7 @@ exports[`<Banner /> should render correctly 1`] = `
 <main
   class="c0"
 >
-  <div
+  <img
     aria-label="Defy death"
     class="c1"
     role="img"
@@ -144,4 +144,4 @@ exports[`<Banner /> should render correctly 1`] = `
     </a>
   </div>
 </main>
-`
+`;

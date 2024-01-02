@@ -13,8 +13,8 @@ export const QUERY_HOME = gql`
       }
     }
     newGames: games(
-      filters: { release_date: { gt: $date } }
-      pagination: { limit: 8 }
+      filters: { release_date: { lte: $date } }
+      pagination: { limit: 15 }
       sort: "release_date:desc"
     ) {
       data {
@@ -25,8 +25,8 @@ export const QUERY_HOME = gql`
     }
 
     upcomingGames: games(
-      filters: { release_date: { gt: $date } }
-      pagination: { limit: 8 }
+      filters: { release_date: { lte: $date } }
+      pagination: { limit: 15 }
       sort: "release_date:desc"
     ) {
       data {
@@ -36,9 +36,9 @@ export const QUERY_HOME = gql`
       }
     }
     freeGames: games(
-      filters: { price: { lte: 8 } }
-      pagination: { limit: 8 }
-      sort: "release_date:desc"
+      filters: { price: { lte: 20 } }
+      pagination: { limit: 15 }
+      sort: "release_date:asc"
     ) {
       data {
         attributes {

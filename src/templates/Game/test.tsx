@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react'
+import { screen } from 'utils/test-utils'
 
 import galleryMock from 'components/Gallery/mock'
 import gameInfoMock from 'components/GameInfo/mock'

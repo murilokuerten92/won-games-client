@@ -1,10 +1,11 @@
-import { fireEvent, screen } from '@testing-library/react'
-import { renderWithTheme } from 'utils/tests/helpers'
+import { fireEvent } from '@testing-library/react'
+import { render, screen } from 'utils/test-utils'
 import theme from 'styles/theme'
 
 import GameCard from '.'
 
 const props = {
+  id: '1',
   slug: 'population-zero',
   title: 'Population Zero',
   developer: 'Rockstar Games',
@@ -25,7 +26,7 @@ jest.mock('next/image', () => ({
 
 describe('<GameCard />', () => {
   it('should render correctly', () => {
-    renderWithTheme(<GameCard {...props} />)
+    render(<GameCard {...props} />)
 
     expect(
       screen.getByRole('heading', { name: props.title })
@@ -52,7 +53,7 @@ describe('<GameCard />', () => {
     // renderiza o componente
     // preço não tenha line-through
     // preço tenha o background secundário
-    renderWithTheme(<GameCard {...props} />)
+    render(<GameCard {...props} />)
 
     const price = screen.getByText('R$235.00')
 
@@ -64,7 +65,7 @@ describe('<GameCard />', () => {
     // renderiza o componente (COM promotionalPrice) // 200 reais // 15 reais
     // preço tenha line-through (200)
     // preço novo promocional não vai ter line-through (15)
-    renderWithTheme(<GameCard {...props} promotionalPrice={15} />)
+    render(<GameCard {...props} promotionalPrice={15} />)
 
     expect(screen.getByText('R$235.00')).toHaveStyle({
       textDecoration: 'line-through'
@@ -76,14 +77,14 @@ describe('<GameCard />', () => {
   })
 
   it('should render a filled Favorite icon when favorite is true', () => {
-    renderWithTheme(<GameCard {...props} favorite />)
+    render(<GameCard {...props} favorite />)
 
     expect(screen.getByLabelText(/remove from wishlist/i)).toBeInTheDocument()
   })
 
   it('should call onFav method when favorite is clicked', () => {
     const onFav = jest.fn()
-    renderWithTheme(<GameCard {...props} favorite onFav={onFav} />)
+    render(<GameCard {...props} favorite onFav={onFav} />)
 
     fireEvent.click(screen.getAllByRole('button')[0])
 
@@ -91,7 +92,7 @@ describe('<GameCard />', () => {
   })
 
   it('should render Ribbon', () => {
-    renderWithTheme(
+    render(
       <GameCard
         {...props}
         ribbon="My Ribbon"
