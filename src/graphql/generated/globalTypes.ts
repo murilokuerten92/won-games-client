@@ -22,6 +22,12 @@ export enum ENUM_COMPONENTPAGERIBBON_SIZE {
   small = "small",
 }
 
+export interface UsersPermissionsRegisterInput {
+  username: string;
+  email: string;
+  password: string;
+}
+
 export enum ENUM_GAME_RATING {
   BR0 = "BR0",
   BR10 = "BR10",
